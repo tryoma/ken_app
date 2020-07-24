@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image_name: MyString
+  birth_day: 2020-07-24
+  grade: MyString
+  prefecture: MyString
+  dojo: 2020-07-24 10:36:06
+  junior_high: MyString
+  high: MyString
+  university: MyString
+  affilation: MyString
+  history: MyString
+  signature: MyString
+  frequency: MyString
+  user: one
+
+two:
+  image_name: MyString
+  birth_day: 2020-07-24
+  grade: MyString
+  prefecture: MyString
+  dojo: 2020-07-24 10:36:06
+  junior_high: MyString
+  high: MyString
+  university: MyString
+  affilation: MyString
+  history: MyString
+  signature: MyString
+  frequency: MyString
+  user: two

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profile/edit'
+
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -7,5 +9,10 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    member do
+     get   '/profile/edit', to: 'profile#edit'
+     patch '/profile/update', to: 'profile#update'
+    end
+  end
 end

@@ -1,12 +1,55 @@
 <% provide(:title, @user.name) %>
-<div>
-  <table class="table table-bordered table-condensed user-table">
-    <tr>
-      <td>名前</td>
-    </tr>
-
-    <tr>
-      <td>名前：<%= @user.name %></td>
-    </tr>
-  </table>
+<div class= "a">
+  <h1><%= @user.name %>の個人ページ</h1>
+</div>
+<div class="b clearfix">
+  <div class="d">
+    <div>
+      <%= image_tag('no-image.png') %>
+    </div>
+  </div>
+  <div class="e">
+    <table class="table table-bordered table-condensed user-table">
+      <tr>
+        <td>生年月日</td>
+        <td>生年月日</td>
+      </tr>
+      <tr>
+        <td>段位</td>
+        <td>段位：</td>
+      </tr>
+      <tr>
+        <td>出身道場</td>
+        <td>出身道場：</td>
+      </tr>
+      <tr>
+        <td>出身中学</td>
+        <td>出身中学：</td>
+      </tr>
+      <tr>
+        <td>出身高校</td>
+        <td>出身高校：</td>
+      </tr>
+      <tr>
+        <td>出身大学</td>
+        <td>出身大学：</td>
+      </tr>
+      <tr>
+        <td>現在の所属</td>
+        <td>現在の所属</td>
+      </tr>
+      <tr>
+        <td>戦歴</td>
+        <td>戦歴</td>
+      </tr>
+      <tr>
+        <td>得意技</td>
+        <td>得意技</td>
+      </tr>
+      <tr>
+        <td>稽古頻度</td>
+        <td>稽古頻度</td>
+      </tr>
+    </table>
+  </div>
 </div>
