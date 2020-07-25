@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def show
+    @event = Event.find(params[:id])
   end
 
   def index
@@ -21,6 +22,14 @@ class EventsController < ApplicationController
   end
   
   def edit
+    @event = Event.find(params[:id])
+  end
+  
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    flash[:success] = "#{@event.event_day}のデータを削除しました。"
+    redirect_to events_url
   end
   
   private

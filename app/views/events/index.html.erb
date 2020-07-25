@@ -1,19 +1,40 @@
 <% provide(:title, 'All Events') %>
 <h1>イベント一覧</h1>
-<%= link_to "新規作成", new_event_path(@user), method: :get, class: "btn btn-primary" %>
-<div class="col-md-10 col-md-offset-1">
-  <table class="table table-condensed table-hover" id="table-users">
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to event.event_day, event %></td>
-        <td>
-          <% if current_user.admin? && !current_user?(@user) %>
+<div class="row" %>
+  <%= link_to "新規作成", new_event_path(@user), method: :get, class: "btn btn-primary" %>
+</div>
+<div class="row">
+  <% @events.each do |event| %>
+    <div class="col-md-4">
+      <table class="table table-condensed table-hover" id="table-users">
+        <tr>
+          <td>開催日</td>
+          <td><%= event.event_day %></td>
+        </tr>
+        <tr>
+          <td>開始時間</td>
+          <td><%= event.start_time %></td>
+        </tr>
+        <tr>
+          <td>終了時間</td>
+          <td><%= event.finish_time %></td>
+        </tr>
+        <tr>
+          <td>稽古レベル</td>
+          <td><%= event.level %></td>
+        </tr>
+      </table>
+        <tr>
+          <%= link_to "詳細", event_path(event), method: :get, class: "btn btn-primary" %>
+        </tr>
+        <tr>
+          <% if current_user.admin? %>
             <%= link_to "削除", event, method: :delete,
                 data: { confirm: "削除してよろしいですか？" },
                 class: "btn btn-danger" %>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+        </tr>
+    </div>
+  <% end %>
 </div>
+  

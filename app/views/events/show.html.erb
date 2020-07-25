@@ -1,2 +1,40 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<% provide(:title, 'Event詳細') %>
+<h1><%= @event.event_day%>@<%= @event.place %>のイベント詳細</h1>
+<div class="row">
+  <div class="col-md-6">
+    地図
+  </div>
+  <div class="col-md-6">
+    <table class="table table-condensed table-hover" id="table-users">
+      <tr>
+        <td>開催日</td>
+        <td><%= @event.event_day %></td>
+      </tr>
+      <tr>
+        <td>開始時間</td>
+        <td><%= @event.start_time %></td>
+      </tr>
+      <tr>
+        <td>終了時間</td>
+        <td><%= @event.finish_time %></td>
+      </tr>
+      <tr>
+        <td>稽古レベル</td>
+        <td><%= @event.level %></td>
+      </tr>
+    </table>
+  </div>
+  <tr>
+    <%= link_to "編集", edit_event_path(@event), method: :get ,class: "btn btn-primary" %>
+  </tr>
+  <tr>
+    <%= link_to "イベントに参加する", "#" ,class: "btn btn-primary" %>
+  </tr>
+  <tr>
+    <% if current_user.admin? %>
+      <%= link_to "削除", @event, method: :delete,
+          data: { confirm: "削除してよろしいですか？" },
+          class: "btn btn-danger" %>
+    <% end %>
+  </tr>
+</div>
