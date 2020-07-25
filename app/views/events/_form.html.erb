@@ -1,0 +1,34 @@
+<%= form_with(model: @event, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: @event %>
+      <%= f.label :event_day, class: "label-#{yield(:class_text)}" %>
+      <%= f.date_field :event_day, class: "form-control" %>
+    
+      <%= f.label :start_time, class: "label-#{yield(:class_text)}" %>
+      <%= f.time_field :start_time, class: "form-control" %>
+    
+      <%= f.label :finish_time, class: "label-#{yield(:class_text)}" %>
+      <%= f.time_field :finish_time, class: "form-control" %>
+    
+      <%= f.label :prefecture, class: "label-#{yield(:class_text)}" %>
+      <%= f.select :prefecture, Event.prefectures.keys, {}, class: "form-control" %>
+      
+      <%= f.label :place, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :place, class: "form-control", placeholder: "例)日本武道館　東京都千代田区北の丸公園2番3号" %>
+      
+      <%= f.label :estimate_people, class: "label-#{yield(:class_text)}" %>
+      <%= f.number_field :estimate_people, class: "form-control", placeholder: "  人", min: 1 %>
+      
+      <%= f.label :level, class: "label-#{yield(:class_text)}" %>
+      <%= f.select :level, Event.levels.keys, {}, class: "form-control" %>
+      
+      <%= f.label :organizer_name, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :organizer_name, class: "form-control" %>
+      
+      <%= f.label :organizer_tel, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :organizer_tel, class: "form-control", placeholder: "例)携帯番号　LINEID" %>
+      
+      <%= f.label :comment, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_area :comment, class: "form-control", placeholder: "例)初開催です！どなたでも！楽しくやりましょう！"%>
+        
+      <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+    <% end %>

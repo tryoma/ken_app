@@ -25,6 +25,16 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
   
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      flash[:success] = "イベント情報を更新しました。"
+      redirect_to event_url(@event)
+    else
+      render :edit
+    end 
+  end
+  
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
@@ -35,6 +45,6 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:event_day, :start_time, :finish_time, :place, :estimate_people, :level, :organizer_name, :organizer_tel, :comment )
+      params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :level, :organizer_name, :organizer_tel, :comment )
     end
 end

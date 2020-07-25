@@ -2,7 +2,41 @@
 <h1><%= @event.event_day%>@<%= @event.place %>のイベント詳細</h1>
 <div class="row">
   <div class="col-md-6">
-    地図
+    <script type="text/javascript">
+      function initMap() {
+        var test ={lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15, 
+                  center: test
+                  });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+    
+        var contentString = '住所：<%= @event.place %>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+    
+        var marker = new google.maps.Marker({
+                      position:test,
+                      map: map,
+                      title: contentString
+                     });
+    
+         marker.addListener('click', function() {
+           infowindow.open(map, marker);
+         });
+      }
+    </script>
+    
+    <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA9u1aAUZeLUxkwQ95Wok82cO1NEaGsY94&callback=initMap">
+    </script>
+    <style type="text/css">
+      #map { height: 500px;
+             width: 100%;}
+    </style>
+    <div id="map"></div>
   </div>
   <div class="col-md-6">
     <table class="table table-condensed table-hover" id="table-users">
@@ -19,8 +53,36 @@
         <td><%= @event.finish_time %></td>
       </tr>
       <tr>
+        <td>都道府県</td>
+        <td><%= @event.prefecture %></td>
+      </tr>
+      <tr>
+        <td>会場</td>
+        <td><%= @event.place %></td>
+      </tr>
+      <tr>
         <td>稽古レベル</td>
         <td><%= @event.level %></td>
+      </tr>
+      <tr>
+        <td>想定人数</td>
+        <td><%= @event.estimate_people %></td>
+      </tr>
+      <tr>
+        <td>現在参加者</td>
+        <td><%= @event.estimate_people %></td>
+      </tr>
+      <tr>
+        <td>主催者</td>
+        <td><%= @event.organizer_name %></td>
+      </tr>
+      <tr>
+        <td>主催者連絡先(TEL or LINEID)</td>
+        <td><%= @event.organizer_tel %></td>
+      </tr>
+      <tr>
+        <td>コメント</td>
+        <td><%= @event.comment %></td>
       </tr>
     </table>
   </div>

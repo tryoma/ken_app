@@ -8,6 +8,7 @@ gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "geocoder"
 gem 'puma',         '~> 3.7'
 gem 'sass-rails',   '~> 5.0'
 gem 'uglifier',     '>= 1.3.0'

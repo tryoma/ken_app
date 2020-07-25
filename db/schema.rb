@@ -10,20 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200725060203) do
+ActiveRecord::Schema.define(version: 20200725112525) do
 
   create_table "events", force: :cascade do |t|
     t.date "event_day"
     t.datetime "start_time"
     t.datetime "finish_time"
+    t.string "prefecture", default: "0", null: false
     t.string "place"
     t.integer "estimate_people"
-    t.string "level"
+    t.string "level", default: "0", null: false
     t.string "organizer_name"
     t.string "organizer_tel"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "profiles", force: :cascade do |t|
