@@ -15,3 +15,8 @@ User.create!(name: "Sample User",
                password: password,
                password_confirmation: password)
 end
+
+User.all.each do |user|
+  user.create_profile!(
+  )
+end

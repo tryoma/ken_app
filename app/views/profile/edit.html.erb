@@ -1,2 +1,20 @@
-<h1>Profile#edit</h1>
-<p>Find me in app/views/profile/edit.html.erb</p>
+<% provide(:title, "Profile Edit") %>
+<% provide(:class_text, 'user--edit') %>
+<% provide(:button_text, '更新') %>
+<h1>プロフィール情報の更新</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, url: profile_update_user_path(@user), local: true, method: :patch) do |f| %>
+      <%= render 'shared/error_messages', object: @user.profile %>
+      
+      <%= f.fields_for @profile, @profile do |t| %>
+    
+        <%= t.label :birth_day, class: "label-#{yield(:class_text)}" %>
+        <%= t.date_field :birth_day, class: "form-control" %>
+      <% end %>
+    
+      <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+    <% end %>
+  </div>
+</div>
