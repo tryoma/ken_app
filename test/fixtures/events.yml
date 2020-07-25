@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_day: 2020-07-25
+  start_time: 2020-07-25 06:02:03
+  finish_time: 2020-07-25 06:02:03
+  place: MyString
+  estimate_people: 1
+  level: MyString
+  organizer_name: MyString
+  organizer_tel: MyString
+  comment: MyText
+  user: one
+
+two:
+  event_day: 2020-07-25
+  start_time: 2020-07-25 06:02:03
+  finish_time: 2020-07-25 06:02:03
+  place: MyString
+  estimate_people: 1
+  level: MyString
+  organizer_name: MyString
+  organizer_tel: MyString
+  comment: MyText
+  user: two
