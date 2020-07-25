@@ -9,9 +9,44 @@
       <%= render 'shared/error_messages', object: @user.profile %>
       
       <%= f.fields_for @profile, @profile do |t| %>
-    
+        
+        <%= t.label :image_name %>
+        <%= t.file_field :image_name %>
+        <%= t.hidden_field :image_name_cache %>
+  
         <%= t.label :birth_day, class: "label-#{yield(:class_text)}" %>
-        <%= t.date_field :birth_day, class: "form-control" %>
+        <%= t.date_field :birth_day, default: { year: 2000, month: 1, day: 1 } ,class: "form-control" %>
+        
+        <%= t.label :grade, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :grade, class: "form-control" %>
+        
+        <%= t.label :prefecture, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :prefecture, class: "form-control" %>
+        
+        <%= t.label :dojo, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :dojo, class: "form-control" %>
+        
+        <%= t.label :junior_high, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :junior_high, class: "form-control" %>
+        
+        <%= t.label :high, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :high, class: "form-control" %>
+        
+        <%= t.label :university, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :university, class: "form-control" %>
+        
+        <%= t.label :affilation, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :affilation, class: "form-control" %>
+        
+        <%= t.label :history, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :history, class: "form-control" %>
+        
+        <%= t.label :signature, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :signature, class: "form-control" %>
+        
+        <%= t.label :frequency, class: "label-#{yield(:class_text)}" %>
+        <%= t.text_field :frequency, class: "form-control" %>
+        
       <% end %>
     
       <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>

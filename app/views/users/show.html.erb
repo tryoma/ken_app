@@ -2,115 +2,119 @@
 <div class= "a">
   <h1><%= @user.name %>の個人ページ</h1>
 </div>
-<div class="b clearfix">
-  <div class="d">
-    <div>
-      <%= image_tag('no-image.png') %>
-    </div>
+<div class="d">
+  <div>
+    <% if @user.profile.image_name.present? %>
+     <%= image_tag @user.profile.image_name_url,:size => '500x500' %>
+    <% else %>
+     <%= image_tag 'no-image.png',:size => '500x500' %>
+    <% end %>
   </div>
-  <div class="e">
-    <table class="table table-bordered table-condensed user-table">
-      <tr>
-        <td>生年月日</td>
-        <td>
-          <% if @user.profile.birth_day.present? %>
-            <%= @user.profile.birth_day %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>段位</td>
-        <td>
-          <% if @user.profile.grade.present? %>
-            <%= @user.profile.grade %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>出身道場</td>
-        <td>
-          <% if @user.profile.dojo.present? %>
-            <%= @user.profile.dojo %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>出身中学</td>
-        <td>
-          <% if @user.profile.junior_high.present? %>
-            <%= @user.profile.junior_high %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>出身高校</td>
-        <td>
-          <% if @user.profile.high.present? %>
-            <%= @user.profile.high %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>出身大学</td>
-        <td>
-          <% if @user.profile.university.present? %>
-            <%= @user.profile.university %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>現在の所属</td>
-        <td>
-          <% if @user.profile.affilation.present? %>
-            <%= @user.profile.affilation %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>戦歴</td>
-        <td>
-          <% if @user.profile.history.present? %>
-            <%= @user.profile.history %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>得意技</td>
-        <td>
-          <% if @user.profile.signature.present? %>
-            <%= @user.profile.signature %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>稽古頻度</td>
-        <td>
-          <% if @user.profile.frequency.present? %>
-            <%= @user.profile.frequency %>
-          <% else %>
-            未記入
-          <% end %>
-        </td>
-      </tr>
-    </table>
-  </div>
+</div>
+<div class="e">
+  <table class="table table-bordered table-condensed user-table">
+    <tr>
+      <td>生年月日</td>
+      <td>
+        <% if @user.profile.birth_day.present? %>
+          <%= @user.profile.birth_day %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>段位</td>
+      <td>
+        <% if @user.profile.grade.present? %>
+          <%= @user.profile.grade %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>出身道場</td>
+      <td>
+        <% if @user.profile.dojo.present? %>
+          <%= @user.profile.dojo %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>出身中学</td>
+      <td>
+        <% if @user.profile.junior_high.present? %>
+          <%= @user.profile.junior_high %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>出身高校</td>
+      <td>
+        <% if @user.profile.high.present? %>
+          <%= @user.profile.high %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>出身大学</td>
+      <td>
+        <% if @user.profile.university.present? %>
+          <%= @user.profile.university %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>現在の所属</td>
+      <td>
+        <% if @user.profile.affilation.present? %>
+          <%= @user.profile.affilation %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>戦歴</td>
+      <td>
+        <% if @user.profile.history.present? %>
+          <%= @user.profile.history %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>得意技</td>
+      <td>
+        <% if @user.profile.signature.present? %>
+          <%= @user.profile.signature %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>稽古頻度</td>
+      <td>
+        <% if @user.profile.frequency.present? %>
+          <%= @user.profile.frequency %>
+        <% else %>
+          未記入
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+<div>
   <%= link_to "編集", profile_edit_user_path(@user), class: "btn btn-lg btn-primary" %>
 </div>
