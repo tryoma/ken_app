@@ -5,7 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[5.1]
       t.date :birth_day
       t.string :grade
       t.string :prefecture
-      t.datetime :dojo
+      t.string :dojo
       t.string :junior_high
       t.string :high
       t.string :university

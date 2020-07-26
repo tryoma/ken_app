@@ -9,7 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @event = Event
+    @events = Event.where(organizer_user_id:current_user.id)
+    @event2 = Event.joins(:members).where(members: { user_id: current_user.id })
+    
   end
 
   def new

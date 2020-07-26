@@ -8,7 +8,7 @@
     <%= form_with(model: @user, url: profile_update_user_path(@user), local: true, method: :patch) do |f| %>
       <%= render 'shared/error_messages', object: @user.profile %>
       
-      <%= f.fields_for @profile, @profile do |t| %>
+      <%= f.fields_for @user.profile do |t| %>
         
         <%= t.label :image_name %>
         <%= t.file_field :image_name %>
