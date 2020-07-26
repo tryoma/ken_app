@@ -4,10 +4,11 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.date :event_day
       t.datetime :start_time
       t.datetime :finish_time
-      t.string :prefecture, null: false, default: 0
+      t.integer :prefecture, null: false, default: 0
       t.string :place
       t.integer :estimate_people
-      t.string :level, null: false, default: 0
+      t.integer :level, null: false, default: 0
+      t.integer :organizer_user_id
       t.string :organizer_name
       t.string :organizer_tel
       t.text :comment

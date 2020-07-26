@@ -7,11 +7,16 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :events
+  resources :events do
+    member do
+      resources :members, only: [:create, :destroy]
+    end
+  end  
+      
   resources :users do
     member do
-     get   '/profile/edit', to: 'profile#edit'
-     patch '/profile/update', to: 'profile#update'
+      get   '/profile/edit', to: 'profile#edit'
+      patch '/profile/update', to: 'profile#update'
     end
   end
 end

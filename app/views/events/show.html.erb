@@ -90,7 +90,14 @@
     <%= link_to "編集", edit_event_path(@event), method: :get ,class: "btn btn-primary" %>
   </tr>
   <tr>
-    <%= link_to "イベントに参加する", "#" ,class: "btn btn-primary" %>
+    <%= link_to "イベントに参加する", members_path(user:current_user), method: :post,
+          data: { confirm: "このイベントに参加しますか？" },
+          class: "btn btn-primary" %>
+  </tr>
+  <tr>
+    <%= link_to "イベントに参加をやめる", member_path(user:current_user), method: :delete,
+          data: { confirm: "このイベントをやめますか？" },
+          class: "btn btn-danger" %>
   </tr>
   <tr>
     <% if current_user.admin? %>

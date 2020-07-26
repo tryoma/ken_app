@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+  before_action :logged_in_user, only: [:new ,:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :destroy 
+  
   def show
     @event = Event.find(params[:id])
   end
@@ -27,6 +31,7 @@ class EventsController < ApplicationController
   
   def update
     @event = Event.find(params[:id])
+    debugger
     if @event.update_attributes(event_params)
       flash[:success] = "イベント情報を更新しました。"
       redirect_to event_url(@event)
@@ -45,6 +50,25 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :level, :organizer_name, :organizer_tel, :comment )
+      params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :level, :organizer_user_id, :organizer_name, :organizer_tel, :comment )
+    end
+    
+   # ログイン済みのユーザーか確認します。
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください。"
+        redirect_to login_url
+      end
+    end
+
+    # アクセスしたユーザーが現在ログインしているユーザーか確認します。
+    def correct_user
+      redirect_to(root_url) unless current_user?(current_user)
+    end
+
+    # システム管理権限所有かどうか判定します。
+    def admin_user
+      redirect_to root_url unless current_user.admin?
     end
 end

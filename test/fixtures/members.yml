@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member_name: MyString
+  user_id: 1
+  attendance: false
+  note: MyString
+  event: one
+
+two:
+  member_name: MyString
+  user_id: 1
+  attendance: false
+  note: MyString
+  event: two

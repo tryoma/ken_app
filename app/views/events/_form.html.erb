@@ -21,14 +21,14 @@
       <%= f.label :level, class: "label-#{yield(:class_text)}" %>
       <%= f.select :level, Event.levels.keys, {}, class: "form-control" %>
       
-      <%= f.label :organizer_name, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :organizer_name, class: "form-control" %>
-      
       <%= f.label :organizer_tel, class: "label-#{yield(:class_text)}" %>
       <%= f.text_field :organizer_tel, class: "form-control", placeholder: "例)携帯番号　LINEID" %>
       
       <%= f.label :comment, class: "label-#{yield(:class_text)}" %>
       <%= f.text_area :comment, class: "form-control", placeholder: "例)初開催です！どなたでも！楽しくやりましょう！"%>
         
+      <%= f.hidden_field :organizer_user_id, :value => current_user.id %>
+      <%= f.hidden_field :organizer_name, :value => current_user.name %>
+      
       <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
     <% end %>

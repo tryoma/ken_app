@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_many :members, dependent: :destroy
   geocoded_by :place
   after_validation :geocode, if: :place_changed?
   
@@ -29,14 +30,14 @@ class Event < ApplicationRecord
      徳島県:36,香川県:37,愛媛県:38,高知県:39,
      福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46, 
      沖縄県:47
-   }
+   },_suffix: true
    
    enum level:{
-     "----":0,
+     "---":0,
      初心者レベル（〜初段）:1,
      中級者レベル（〜４段）:2,
      上級者レベル（〜６段）:3,
      超上級者レベル（〜８段）:4,
      誰でもOK:5
-   }
+   },_suffix: true
 end
