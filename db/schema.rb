@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 20200726004302) do
     t.date "event_day"
     t.datetime "start_time"
     t.datetime "finish_time"
-    t.integer "prefecture", default: 0, null: false
+    t.integer "prefecture"
+    t.string "prefecture_search"
     t.string "place"
     t.integer "estimate_people"
     t.integer "level", default: 0, null: false

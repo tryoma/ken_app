@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
+      @event = @event.update(prefecture_search:params[:event][:prefecture])
       flash[:success] = 'イベント新規作成に成功しました。'
       redirect_to events_url
     else
@@ -31,8 +32,8 @@ class EventsController < ApplicationController
   
   def update
     @event = Event.find(params[:id])
-    debugger
     if @event.update_attributes(event_params)
+      @event = @event.update(prefecture_search:params[:event][:prefecture])
       flash[:success] = "イベント情報を更新しました。"
       redirect_to event_url(@event)
     else
