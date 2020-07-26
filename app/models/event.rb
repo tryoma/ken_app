@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   has_many :members, dependent: :destroy
+  default_scope -> { order(event_day: :asc) }
   geocoded_by :place
   after_validation :geocode, if: :place_changed?
   
