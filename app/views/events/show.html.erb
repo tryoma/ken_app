@@ -41,31 +41,31 @@
   <div class="col-md-6">
     <table class="table table-condensed table-hover" id="table-users">
       <tr>
-        <td>開催日</td>
+        <td><%= Event.human_attribute_name(:event_day) %></td>
         <td><%= @event.event_day %></td>
       </tr>
       <tr>
-        <td>開始時間</td>
+        <td><%= Event.human_attribute_name(:start_time) %></td>
         <td><%= @event.start_time %></td>
       </tr>
       <tr>
-        <td>終了時間</td>
+        <td><%= Event.human_attribute_name(:finish_time) %></td>
         <td><%= @event.finish_time %></td>
       </tr>
       <tr>
-        <td>都道府県</td>
+        <td><%= Event.human_attribute_name(:prefecture) %></td>
         <td><%= @event.prefecture %></td>
       </tr>
       <tr>
-        <td>会場</td>
+        <td><%= Event.human_attribute_name(:place) %></td>
         <td><%= @event.place %></td>
       </tr>
       <tr>
-        <td>稽古レベル</td>
+        <td><%= Event.human_attribute_name(:level) %></td>
         <td><%= @event.level %></td>
       </tr>
       <tr>
-        <td>想定人数</td>
+        <td><%= Event.human_attribute_name(:estimate_people) %></td>
         <td><%= @event.estimate_people %></td>
       </tr>
       <tr>
@@ -73,15 +73,15 @@
         <td><%= @event.estimate_people %></td>
       </tr>
       <tr>
-        <td>主催者</td>
+        <td><%= Event.human_attribute_name(:organizer_name) %></td>
         <td><%= @event.organizer_name %></td>
       </tr>
       <tr>
-        <td>主催者連絡先(TEL or LINEID)</td>
+        <td><%= Event.human_attribute_name(:organizer_tel) %></td>
         <td><%= @event.organizer_tel %></td>
       </tr>
       <tr>
-        <td>コメント</td>
+        <td><%= Event.human_attribute_name(:comment) %></td>
         <td><%= @event.comment %></td>
       </tr>
     </table>

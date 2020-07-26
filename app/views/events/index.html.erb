@@ -8,27 +8,27 @@
     <div class="col-md-4">
       <table class="table table-condensed table-hover" id="table-users">
         <tr>
-          <td>都道府県</td>
+          <td><%= Event.human_attribute_name(:prefecture) %></td>
           <td><%= event.prefecture %></td>
         </tr>
         <tr>
-          <td>開催日</td>
+          <td><%= Event.human_attribute_name(:event_day) %></td>
           <td><%= event.event_day %></td>
         </tr>
         <tr>
-          <td>開始時間</td>
+          <td><%= Event.human_attribute_name(:start_time) %></td>
           <td><%= event.start_time %></td>
         </tr>
         <tr>
-          <td>終了時間</td>
+          <td><%= Event.human_attribute_name(:finish_time) %></td>
           <td><%= event.finish_time %></td>
         </tr>
         <tr>
-          <td>会場</td>
+          <td><%= Event.human_attribute_name(:place) %></td>
           <td><%= event.place %></td>
         </tr>
         <tr>
-          <td>稽古レベル</td>
+          <td><%= Event.human_attribute_name(:level) %></td>
           <td><%= event.level %></td>
         </tr>
       </table>

@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      profile: プロフィール
+      event: イベント
     attributes:
         user:
           id: ID
@@ -11,3 +13,34 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+        profile:
+          id: プロフィールID
+          image_name: プロフィール写真
+          birth_day: 生年月日
+          grade: 段位
+          prefecture: お住まいの都道府県
+          dojo: 出身道場
+          junior_high: 出身中学校
+          high: 出身高校
+          university: 出身大学
+          affilation: 現在の所属
+          history: 戦歴
+          signature: 得意技
+          frequency: 稽古頻度
+          created_at: 作成日
+          updated_at: 更新日
+        event:
+          event_day: 開催日
+          start_time: 開始時間
+          finish_time: 終了時間
+          prefecture: 開催都道府県
+          place: 開催会場
+          estimate_people: 想定人数
+          level: 稽古レベル
+          organizer_user_id: 主催者　ID
+          organizer_name: 主催者の名前
+          organizer_tel: 主催者の連絡先
+          comment: コメント
+          created_at: 作成日
+          updated_at: 更新日
+        

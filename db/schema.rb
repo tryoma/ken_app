@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20200726004302) do
   create_table "profiles", force: :cascade do |t|
     t.string "image_name"
     t.date "birth_day"
-    t.string "grade"
-    t.string "prefecture"
+    t.integer "grade"
+    t.integer "prefecture"
     t.string "dojo"
     t.string "junior_high"
     t.string "high"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20200726004302) do
     t.string "affilation"
     t.string "history"
     t.string "signature"
-    t.string "frequency"
+    t.integer "frequency"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
