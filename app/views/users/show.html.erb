@@ -145,15 +145,15 @@
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:event_day) %></td>
-          <td><%= event.event_day %></td>
+          <td><%= l event.event_day, format: :long %></td>
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:start_time) %></td>
-          <td><%= event.start_time %></td>
+          <td><%= l event.start_time, format: :time %></td>
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:finish_time) %></td>
-          <td><%= event.finish_time %></td>
+          <td><%= l event.finish_time, format: :time %></td>
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:place) %></td>
@@ -193,15 +193,15 @@
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:event_day) %></td>
-          <td><%= event.event_day %></td>
+          <td><%= l event.event_day, format: :long %></td>
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:start_time) %></td>
-          <td><%= event.start_time %></td>
+          <td><%= l event.start_time, format: :time %></td>
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:finish_time) %></td>
-          <td><%= event.finish_time %></td>
+          <td><%= l event.finish_time, format: :time %></td>
         </tr>
         <tr>
           <td><%= Event.human_attribute_name(:place) %></td>

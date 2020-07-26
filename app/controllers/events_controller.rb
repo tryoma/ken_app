@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @search_events = Event.all.page(params[:page]).search(params[:search])
   end
 
   def new

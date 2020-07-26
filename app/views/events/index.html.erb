@@ -1,48 +1,59 @@
 <% provide(:title, 'All Events') %>
 <h1>イベント一覧</h1>
+<div>
+  <%= form_tag(events_path, :method => "get") do %>  
+    <p>  
+      <%= text_field_tag :search, params[:search] %>  
+      <%= submit_tag "Search", :prefecture => nil %>  
+    </p>  
+  <% end %>  
+</div>
 <div class="row" %>
   <%= link_to "新規作成", new_event_path(@user), method: :get, class: "btn btn-primary" %>
 </div>
-<div class="row">
-  <% @events.each do |event| %>
-    <div class="col-md-4">
-      <table class="table table-condensed table-hover" id="table-users">
-        <tr>
-          <td><%= Event.human_attribute_name(:prefecture) %></td>
-          <td><%= event.prefecture %></td>
-        </tr>
-        <tr>
-          <td><%= Event.human_attribute_name(:event_day) %></td>
-          <td><%= event.event_day %></td>
-        </tr>
-        <tr>
-          <td><%= Event.human_attribute_name(:start_time) %></td>
-          <td><%= event.start_time %></td>
-        </tr>
-        <tr>
-          <td><%= Event.human_attribute_name(:finish_time) %></td>
-          <td><%= event.finish_time %></td>
-        </tr>
-        <tr>
-          <td><%= Event.human_attribute_name(:place) %></td>
-          <td><%= event.place %></td>
-        </tr>
-        <tr>
-          <td><%= Event.human_attribute_name(:level) %></td>
-          <td><%= event.level %></td>
-        </tr>
-      </table>
-        <tr>
-          <%= link_to "詳細", event_path(event), method: :get, class: "btn btn-primary" %>
-        </tr>
-        <tr>
-          <% if current_user.admin? %>
-            <%= link_to "削除", event, method: :delete,
-                data: { confirm: "削除してよろしいですか？" },
-                class: "btn btn-danger" %>
-          <% end %>
-        </tr>
-    </div>
-  <% end %>
-</div>
+
+<% if @search_events %>
+  <div class="row">
+    <% @search_events.each do |event| %>
+      <div class="col-md-4">
+        <table class="table table-condensed table-hover" id="table-users">
+          <tr>
+            <td><%= Event.human_attribute_name(:prefecture) %></td>
+            <td><%= event.prefecture %></td>
+          </tr>
+          <tr>
+            <td><%= Event.human_attribute_name(:event_day) %></td>
+            <td><%= l event.event_day, format: :long %></td>
+          </tr>
+          <tr>
+            <td><%= Event.human_attribute_name(:start_time) %></td>
+            <td><%= l event.start_time, format: :time %></td>
+          </tr>
+          <tr>
+            <td><%= Event.human_attribute_name(:finish_time) %></td>
+            <td><%= l event.finish_time, format: :time %></td>
+          </tr>
+          <tr>
+            <td><%= Event.human_attribute_name(:place) %></td>
+            <td><%= event.place %></td>
+          </tr>
+          <tr>
+            <td><%= Event.human_attribute_name(:level) %></td>
+            <td><%= event.level %></td>
+          </tr>
+        </table>
+          <tr>
+            <%= link_to "詳細", event_path(event), method: :get, class: "btn btn-primary" %>
+          </tr>
+          <tr>
+            <% if current_user.admin? %>
+              <%= link_to "削除", event, method: :delete,
+                  data: { confirm: "削除してよろしいですか？" },
+                  class: "btn btn-danger" %>
+            <% end %>
+          </tr>
+      </div>
+    <% end %>
+  </div>
+<% end %>
   
