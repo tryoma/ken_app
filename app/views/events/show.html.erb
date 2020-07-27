@@ -1,5 +1,5 @@
 <% provide(:title, 'Event詳細') %>
-<h1><%= @event.event_day%>@<%= @event.place %>のイベント詳細</h1>
+<h1><%= @event.event_day %>@<%= @event.place %>のイベント詳細</h1>
 <div class="row">
   <div class="col-md-6">
     <script type="text/javascript">
@@ -66,11 +66,16 @@
       </tr>
       <tr>
         <td><%= Event.human_attribute_name(:estimate_people) %></td>
-        <td><%= @event.estimate_people %></td>
+        <td><%= @event.estimate_people %>人</td>
       </tr>
       <tr>
         <td>現在参加者</td>
-        <td><%= @event.estimate_people %></td>
+        <td>
+          <%= @event.members.count %>人
+          <% if @event.members.count > 0 %>
+            <%= link_to "参加者一覧", members_path(id:@event.id), method: :get ,class: "btn btn-primary" %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td><%= Event.human_attribute_name(:organizer_name) %></td>

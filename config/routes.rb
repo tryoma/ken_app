@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :events do
     member do
-      resources :members, only: [:create, :destroy]
+      resources :members, only: [:create, :destroy, :index]
     end
   end  
       

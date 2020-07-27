@@ -1,0 +1,16 @@
+<% provide(:title, 'All Members') %>
+<h1>参加者一覧</h1>
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-condensed table-hover" id="table-users">
+    <thead>
+      <tr>
+        <th><%= Member.human_attribute_name :member_name %></th>
+      </tr>
+    </thead>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.member_name, user_path(member.user_id) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
