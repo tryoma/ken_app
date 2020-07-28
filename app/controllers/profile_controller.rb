@@ -6,7 +6,6 @@ class ProfileController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    debugger
     if @user.profile.update_attributes(user_profile_params)
       flash[:success] = "プロフィール情報を更新しました。"
       redirect_to @user

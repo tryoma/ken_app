@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :logged_in_user, only: [:new ,:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit]
   before_action :admin_user, only: :destroy 
   
   def show
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     if @event.update_attributes(event_params)
       @event = @event.update(prefecture_search:params[:event][:prefecture])
       flash[:success] = "イベント情報を更新しました。"
-      redirect_to event_url(@event)
+      redirect_to event_url
     else
       render :edit
     end 
@@ -63,9 +63,9 @@ class EventsController < ApplicationController
       end
     end
 
-    # アクセスしたユーザーが現在ログインしているユーザーか確認します。
     def correct_user
-      redirect_to(root_url) unless current_user?(current_user)
+      @user = User.find(params[:user_id])
+      redirect_to(root_url) unless @user == current_user
     end
 
     # システム管理権限所有かどうか判定します。

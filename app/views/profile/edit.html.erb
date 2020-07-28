@@ -17,11 +17,11 @@
         <%= t.label :birth_day, class: "label-#{yield(:class_text)}" %>
         <%= t.date_field :birth_day, default: { year: 2000, month: 1, day: 1 } ,class: "form-control" %>
         
-        <%= f.label "段位", class: "label-#{yield(:class_text)}" %>
-        <%= f.select :grade, Profile.grades.keys, {}, class: "form-control" %>
+        <%= t.label :grade, class: "label-#{yield(:class_text)}" %>
+        <%= t.select :grade, Profile.grades.keys, {}, class: "form-control" %>
         
-        <%= f.label "出身都道府県", class: "label-#{yield(:class_text)}" %>
-        <%= f.select :prefecture, Profile.prefectures.keys, {}, class: "form-control" %>
+        <%= t.label :prefecture, class: "label-#{yield(:class_text)}" %>
+        <%= t.select :prefecture, Profile.prefectures.keys, {}, class: "form-control" %>
         
         <%= t.label :dojo, class: "label-#{yield(:class_text)}" %>
         <%= t.text_field :dojo, class: "form-control" %>
@@ -44,8 +44,8 @@
         <%= t.label :signature, class: "label-#{yield(:class_text)}" %>
         <%= t.text_field :signature, class: "form-control" %>
         
-        <%= f.label "稽古頻度", class: "label-#{yield(:class_text)}" %>
-        <%= f.select :flequency, Profile.flequencies.keys, {}, class: "form-control" %>
+        <%= t.label :frequency, class: "label-#{yield(:class_text)}" %>
+        <%= t.select :frequency, Profile.frequencies.keys, {}, class: "form-control" %>
         
       <% end %>
     

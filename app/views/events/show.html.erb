@@ -1,5 +1,5 @@
 <% provide(:title, 'Event詳細') %>
-<h1><%= @event.event_day %>@<%= @event.place %>のイベント詳細</h1>
+<h1><%= l @event.event_day, format: :default %>@<%= @event.place %>のイベント詳細</h1>
 <div class="row">
   <div class="col-md-6">
     <script type="text/javascript">
@@ -91,21 +91,28 @@
       </tr>
     </table>
   </div>
+  <% if current_user.id == @event.organizer_user_id %>
+    <tr>
+      <%= link_to "編集", edit_event_path(id:@event.id,user_id:@event.organizer_user_id), method: :get ,class: "btn btn-primary" %>
+    </tr>
+  <% end %>
+  <% unless current_user.id == @event.organizer_user_id %>
+    <% unless @event.members.where(user_id:current_user.id).present? %>
+      <tr>
+        <%= link_to "イベントに参加する", members_path(user:current_user), method: :post,
+              data: { confirm: "このイベントに参加しますか？" },
+              class: "btn btn-primary" %>
+      </tr>
+    <% else %>
+      <tr>
+        <%= link_to "イベントに参加をやめる", member_path(user:current_user), method: :delete,
+              data: { confirm: "このイベントをやめますか？" },
+              class: "btn btn-danger" %>
+      </tr>
+    <% end %>
+  <% end %>
   <tr>
-    <%= link_to "編集", edit_event_path(@event), method: :get ,class: "btn btn-primary" %>
-  </tr>
-  <tr>
-    <%= link_to "イベントに参加する", members_path(user:current_user), method: :post,
-          data: { confirm: "このイベントに参加しますか？" },
-          class: "btn btn-primary" %>
-  </tr>
-  <tr>
-    <%= link_to "イベントに参加をやめる", member_path(user:current_user), method: :delete,
-          data: { confirm: "このイベントをやめますか？" },
-          class: "btn btn-danger" %>
-  </tr>
-  <tr>
-    <% if current_user.admin? %>
+    <% if current_user.admin? or current_user.id == @event.organizer_user_id %>
       <%= link_to "削除", @event, method: :delete,
           data: { confirm: "削除してよろしいですか？" },
           class: "btn btn-danger" %>
