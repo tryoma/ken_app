@@ -79,7 +79,7 @@
       </tr>
       <tr>
         <td><%= Event.human_attribute_name(:organizer_name) %></td>
-        <td><%= @event.organizer_name %></td>
+        <td><%= link_to @event.organizer_name , user_path(@event.organizer_user_id)  %></td>
       </tr>
       <tr>
         <td><%= Event.human_attribute_name(:organizer_tel) %></td>
@@ -96,26 +96,30 @@
       <%= link_to "編集", edit_event_path(id:@event.id,user_id:@event.organizer_user_id), method: :get ,class: "btn btn-primary" %>
     </tr>
   <% end %>
-  <% unless current_user.id == @event.organizer_user_id %>
-    <% unless @event.members.where(user_id:current_user.id).present? %>
-      <tr>
-        <%= link_to "イベントに参加する", members_path(user:current_user), method: :post,
-              data: { confirm: "このイベントに参加しますか？" },
-              class: "btn btn-primary" %>
-      </tr>
-    <% else %>
-      <tr>
-        <%= link_to "イベントに参加をやめる", member_path(user:current_user), method: :delete,
-              data: { confirm: "このイベントをやめますか？" },
-              class: "btn btn-danger" %>
-      </tr>
-    <% end %>
+  <% if current_user.admin? or current_user.id == @event.organizer_user_id %>
+    <tr>
+        <%= link_to "削除", @event, method: :delete,
+            data: { confirm: "削除してよろしいですか？" },
+            class: "btn btn-danger" %>
+    </tr>
   <% end %>
-  <tr>
-    <% if current_user.admin? or current_user.id == @event.organizer_user_id %>
-      <%= link_to "削除", @event, method: :delete,
-          data: { confirm: "削除してよろしいですか？" },
-          class: "btn btn-danger" %>
+  <% if @event.event_day > DateTime.now %>
+    <% unless current_user.id == @event.organizer_user_id %>
+      <% unless @event.members.where(user_id:current_user.id).present? %>
+        <tr>
+          <%= link_to "イベントに参加する", members_path(user:current_user), method: :post,
+                data: { confirm: "このイベントに参加しますか？" },
+                class: "btn btn-primary" %>
+        </tr>
+      <% else %>
+        <tr>
+          <%= link_to "イベントに参加をやめる", member_path(user:current_user), method: :delete,
+                data: { confirm: "このイベントをやめますか？" },
+                class: "btn btn-danger" %>
+        </tr>
+      <% end %>
     <% end %>
-  </tr>
+  <% else %>
+    <tr>※このイベントは終了しています。</tr>
+  <% end %>
 </div>
