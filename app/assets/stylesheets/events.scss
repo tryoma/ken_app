@@ -1,9 +1,27 @@
 /* ユーザー情報テーブル */
 
+.event_class {
+  vertical-align: middle;
+  text-align: center;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.event_botton {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.event_botton_show {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
 .user-table {
   vertical-align: middle;
   text-align: center;
 }
+
 
 .d{
   float:left;

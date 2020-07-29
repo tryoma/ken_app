@@ -5,9 +5,9 @@
 <div>
   <div class="col-md-6">
     <% if @user.profile.image_name.present? %>
-     <%= image_tag @user.profile.image_name_url,:size => '500x500' %>
+     <%= image_tag @user.profile.image_name_url,:size => '400x400' %>
     <% else %>
-     <%= image_tag 'no-image.png',:size => '500x500' %>
+     <%= image_tag 'no-image.png',:size => '400x400' %>
     <% end %>
   </div>
 </div>
@@ -125,12 +125,12 @@
         </td>
       </tr>
     </table>
+    <tr>
+      <% if current_user.id == @user.id %>
+        <%= link_to "編集", profile_edit_user_path(@user), class: "btn btn-lg btn-primary" %>
+      <% end %>
+    </tr>
   </div>
-</div>
-<div>
-  <% if current_user.id == @user.id %>
-    <%= link_to "編集", profile_edit_user_path(@user), class: "btn btn-lg btn-primary" %>
-  <% end %>
 </div>
 <div class="col-md-12">
   <div>

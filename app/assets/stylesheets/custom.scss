@@ -37,9 +37,10 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: 30px;
   text-align: center;
   font-weight: normal;
   color: #777;
@@ -102,4 +103,11 @@ p {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.label-protify {
+  margin-top: 1px;
+  margin-left: 1px;
+  color: #f00;
+  border: solid 0.25px #f00;
 }
