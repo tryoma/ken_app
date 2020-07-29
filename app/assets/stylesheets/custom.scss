@@ -1,6 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+.main-container {
+  background-image: image_url("kendo.jpg");
+  height: 800px;
+  background-size:cover;
+  text-align:center;
+  margin:center;
+  
+}
+
+.main-container {
+  padding-top: 200px;
+}
+
+
 /* universal */
 
 body {
