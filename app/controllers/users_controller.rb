@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :admin_user, only: :destroy
+  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
 
   def index
     @search_users = User.paginate(page: params[:page]).search(params[:search])  

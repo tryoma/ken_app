@@ -1,14 +1,18 @@
 <% provide(:title, 'All Users') %>
 <h1>ユーザー一覧</h1>
-<%= form_tag(users_path, :method => "get") do %>  
-  <p>  
-    <%= text_field_tag :search, params[:search] %>  
-    <%= submit_tag "Search", :name => nil %>  
-  </p>  
-<% end %> 
+<div class="col-md-8 col-md-offset-2">
+  <div class="user_class">
+    <%= form_tag(users_path, :method => "get") do %>  
+      <p>  
+        <%= text_field_tag :search, params[:search] %>  
+        <%= submit_tag "Search", :name => nil %>  
+      </p>  
+    <% end %>
+  </div>
+</div>
 
 <% if @search_users %> 
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-8 col-md-offset-2">
     <table class="table table-condensed table-hover" id="table-users">
       <thead>
         <tr>
