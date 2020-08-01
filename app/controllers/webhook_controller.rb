@@ -11,6 +11,7 @@ class WebhookController < ApplicationController
   end
  
   def callback
+    debugger
     body = request.body.read
  
     signature = request.env['HTTP_X_LINE_SIGNATURE']
