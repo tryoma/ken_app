@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post '/callback', to: 'webhook#callback'
+  post '/callback' => 'webhook#callback'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
