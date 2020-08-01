@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   def notification #LINEアカウント全員に、別途定義したメッセージを送る
     message={       
        type: 'text',
-       text: '新しくイベントが追加されました。確認してください。'
+       text: '新しくイベントが追加されました。確認してください。https://aqueous-everglades-07337.herokuapp.com/events/<%= @event.id %>'
      }
     client.broadcast(message)
   end
