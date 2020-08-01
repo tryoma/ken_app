@@ -37,10 +37,12 @@ class EventsController < ApplicationController
   end
   
   def notification #LINEアカウント全員に、別途定義したメッセージを送る
-    message= '新しくイベントが追加されました。確認してください。'
+    message={       
+       type: 'text',
+       text: '新しくイベントが追加されました。確認してください。'
+     }
     client.broadcast(message)
   end
-  
   def edit
     @event = Event.find(params[:id])
   end
