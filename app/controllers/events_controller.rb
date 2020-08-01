@@ -30,6 +30,7 @@ class EventsController < ApplicationController
       @event = @event.update(prefecture_search:params[:event][:prefecture])
       flash[:success] = 'イベント新規作成に成功しました。'
       notification
+      helper_method :notification
       redirect_to events_url
     else
       render :new
