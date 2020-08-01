@@ -3,7 +3,6 @@ require 'line/bot'
 class EventsController < ApplicationController
   before_action :logged_in_user, only: [:new ,:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit]
-  before_action :admin_user, only: :destroy 
   
   def client
     @client ||= Line::Bot::Client.new { |config|
