@@ -30,6 +30,7 @@ class EventsController < ApplicationController
       @event = @event.update(prefecture_search:params[:event][:prefecture])
       flash[:success] = 'イベント新規作成に成功しました。'
       notification
+      helper_method :notification
       redirect_to events_url
     else
       render :new
@@ -39,7 +40,7 @@ class EventsController < ApplicationController
   def notification #LINEアカウント全員に、別途定義したメッセージを送る
     message={       
        type: "text",
-       text: "新しく稽古会が追加されました！確認してみましょう！\nhttps://aqueous-everglades-07337.herokuapp.com/events"
+       text: "新しく稽古会が追加されました！確認してみましょう！\nhttps://aqueous-everglades-07337.herokuapp.com/events" + @event.id.to_s
      }
     client.broadcast(message)
   end
