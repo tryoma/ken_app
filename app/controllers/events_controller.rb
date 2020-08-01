@@ -1,7 +1,16 @@
+require 'line/bot'
+
 class EventsController < ApplicationController
   before_action :logged_in_user, only: [:new ,:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit]
   before_action :admin_user, only: :destroy 
+  
+  def client
+    @client ||= Line::Bot::Client.new { |config|
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    }
+  end
   
   def show
     @event = Event.find(params[:id])
@@ -20,10 +29,16 @@ class EventsController < ApplicationController
     if @event.save
       @event = @event.update(prefecture_search:params[:event][:prefecture])
       flash[:success] = 'イベント新規作成に成功しました。'
+      notification
       redirect_to events_url
     else
       render :new
     end
+  end
+  
+  def notification #LINEアカウント全員に、別途定義したメッセージを送る
+    message= '新しくイベントが追加されました。確認してください。'
+    client.broadcast(message)
   end
   
   def edit
@@ -53,6 +68,7 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :level, :organizer_user_id, :organizer_name, :organizer_tel, :comment )
     end
+    
     
    # ログイン済みのユーザーか確認します。
     def logged_in_user
