@@ -35,13 +35,6 @@ class EventsController < ApplicationController
     end
   end
   
-  def notification #LINEアカウント全員に、別途定義したメッセージを送る
-    message={       
-       type: 'text',
-       text: "新しく稽古会が追加されました！確認してみましょう！\nhttps://aqueous-everglades-07337.herokuapp.com/events/"
-     }
-    client.broadcast(message)
-  end
   
   def edit
     @event = Event.find(params[:id])
@@ -71,6 +64,13 @@ class EventsController < ApplicationController
       params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :level, :organizer_user_id, :organizer_name, :organizer_tel, :comment )
     end
     
+    def notification #LINEアカウント全員に、別途定義したメッセージを送る
+      message={       
+         type: 'text',
+         text: "新しく稽古会が追加されました！確認してみましょう！\nhttps://aqueous-everglades-07337.herokuapp.com/events/"+ @event.id.to_s
+       }
+      client.broadcast(message)
+    end
     
    # ログイン済みのユーザーか確認します。
     def logged_in_user
