@@ -18,7 +18,7 @@ class WebhookController < ApplicationController
       error 400 do 'Bad Request' end
     end
  
-    events = client.parse_events_from(body)
+    events = "バーカ"
  
     events.each { |event|
       case event
