@@ -1,17 +1,20 @@
 <% provide(:title, 'All Events') %>
 <h1>稽古会一覧</h1>
-<div class="row">
+<div class="col-md-5">
+  <div class="qr_class">
+   <%= image_tag 'kenapp.png',:size => '80x80' %>
+   <p>LINEの友達登録をすると<br>新規稽古会のお知らせが来るようになります！</p>
+  </div> 
+</div>
+
+<div class="row" %>
   <div class="event_class">
     <%= form_tag(events_path, :method => "get") do %>  
       <p>  
-        <%= text_field_tag :search, params[:search] %>  
+        <%= text_field_tag :search, params[:search], placeholder: "例)　東京都" %>  
         <%= submit_tag "Search", :prefecture => nil %>  
       </p>  
     <% end %>  
-  </div>
-</div>
-<div class="row" %>
-  <div class="event_class">
     <%= link_to "稽古会 新規作成", new_event_path(@user), method: :get, class: "btn btn-primary" %>
   </div>
 </div>

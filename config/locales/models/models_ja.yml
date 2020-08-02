@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       profile: プロフィール
       event: イベント
+      member: メンバー
     attributes:
         user:
           id: ID
@@ -43,4 +44,7 @@ ja:
           comment: コメント
           created_at: 作成日
           updated_at: 更新日
+        member:
+          member_name: 参加者名前
+          
         
